@@ -1,0 +1,21 @@
+{
+  "liveServer.settings.ignoreFiles": [
+    "**/scratch/**",
+    "**/scratch_db/**",
+    "**/scripts/**",
+    "**/supabase/**",
+    "**/.codex/**",
+    "**/.agents/**",
+    "**/.gemini/**",
+    "**/node_modules/**",
+    "**/*.sql",
+    "**/*.md",
+    "**/*.log",
+    "**/*.tmp",
+    "**/*.csv",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.webp"
+  ]
+}

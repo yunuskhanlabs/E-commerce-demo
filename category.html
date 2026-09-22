@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category | E-Commerce Demo</title>
+  <meta name="description" content="Explore E-Commerce Demo category drops — oversized tees, shirts, straight denim, and streetwear fits made in small batches.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=1.8">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="category-page">
+  <!-- SVG ICON SPRITE -->
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="icon-cart" viewBox="0 0 24 24">
+      <path d="M3 4h2l2.4 12.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="9" cy="21" r="1.4" fill="currentColor" />
+      <circle cx="18" cy="21" r="1.4" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M21 21l-4.35-4.35" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-tshirt" viewBox="0 0 24 24">
+      <path d="M9 3L3 7l3 4 2-1v11h8V10l2 1 3-4-6-4a4 4 0 0 1-6 0z" fill="none" stroke="currentColor"
+        stroke-width="1.8" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-shirt" viewBox="0 0 24 24">
+      <path d="M6 4l6-2 6 2 3 5-3 3-2-1v10H8V10L6 11 3 8l3-4z" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linejoin="round" />
+      <path d="M12 2v19M9 7l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.8" />
+    </symbol>
+    <symbol id="icon-jeans" viewBox="0 0 24 24">
+      <path d="M5 4h14l1 17-6-1-2-10-2 10-6 1L5 4z" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linejoin="round" />
+      <path d="M5 8h14M12 4v4" fill="none" stroke="currentColor" stroke-width="1.8" />
+    </symbol>
+    <symbol id="icon-pants" viewBox="0 0 24 24">
+      <path d="M6 3h12l1 18-5-1-2-9-2 9-5 1L6 3z" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linejoin="round" />
+      <path d="M6 7h12" fill="none" stroke="currentColor" stroke-width="1.8" />
+    </symbol>
+  </svg>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html#home" class="logo" aria-label="E-Commerce Demo — Home">E-COMMERCE<span> DEMO</span></a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html#shop">Shop All</a>
+        <a href="index.html#featured">New Drops</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#why">Our Story</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Search" aria-expanded="false" aria-controls="searchPanel">
+          <svg class="ic">
+            <use href="#icon-search" />
+          </svg>
+        </button>
+        <button class="icon-btn" id="cartBtn" aria-label="Cart" aria-expanded="false" aria-controls="cartPanel">
+          <svg class="ic">
+            <use href="#icon-cart" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"
+          aria-controls="navMenu">
+          <svg class="ic" id="menuIcon">
+            <use href="#icon-menu" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Panel -->
+    <div class="search-panel" id="searchPanel">
+      <div class="search-panel-inner">
+        <svg class="ic">
+          <use href="#icon-search" />
+        </svg>
+        <input type="search" placeholder="Search in this category or all drops…" id="searchInput"
+          aria-label="Search products">
+        <button class="icon-btn" id="closeSearch" aria-label="Close search">
+          <svg class="ic">
+            <use href="#icon-close" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CART DRAWER ============ -->
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-panel-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart">
+        <svg class="ic">
+          <use href="#icon-close" />
+        </svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <p class="cart-empty" id="cartEmpty">Your cart is empty. Add a fit to get started.</p>
+    <div class="cart-summary">
+      <span>Subtotal</span>
+      <strong id="cartSubtotal">₹0</strong>
+    </div>
+    <button class="btn btn-primary cart-checkout" id="checkoutBtn" type="button"
+      aria-describedby="checkoutMsg">Checkout</button>
+    <p class="cart-checkout-msg" id="checkoutMsg" aria-live="polite"></p>
+  </aside>
+  <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="category-main" id="categoryMain">
+    <!-- Category Hero / Header -->
+    <section class="category-hero" id="categoryHero">
+      <div class="section-inner">
+        <nav class="category-breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html#home">Home</a>
+          <span class="crumb-sep">/</span>
+          <a href="index.html#categories">Categories</a>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current" id="categoryCrumbTitle">Loading…</span>
+        </nav>
+
+        <div class="category-header-content" id="categoryHeaderContent">
+          <div class="family-hero-dp-wrap" id="familyHeroDpWrap" hidden>
+            <img class="family-hero-dp-img" id="familyHeroDpImg" src="images/ca2e03bc34d1c75b624003e138376397.jpg" alt="" loading="eager" decoding="async">
+          </div>
+          <div class="category-title-wrap">
+            <span class="eyebrow" id="categoryEyebrow">COLLECTION DROP</span>
+            <h1 class="category-title" id="categoryTitle">Loading Category…</h1>
+            <p class="category-description" id="categoryDesc">Explore small-batch streetwear designed for movement and oversized cuts.</p>
+            <div class="category-discount-banner" id="categoryDiscountBanner" hidden></div>
+          </div>
+          <div class="category-stats">
+            <span class="category-product-badge" id="categoryProductBadge">0 Fits</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Catalog Section -->
+    <section class="section category-catalog-section" id="categoryCatalog">
+      <div class="section-inner">
+        <!-- Interactive Category Filters Bar -->
+        <div class="product-filters category-filters" id="categoryFilters" aria-label="Filter category products">
+          <div class="filter-control">
+            <label for="priceFilter">Price Range</label>
+            <select id="priceFilter">
+              <option value="">All prices</option>
+            </select>
+          </div>
+          <div class="filter-control" id="sizeFilterControl">
+            <label for="sizeFilter">Size</label>
+            <select id="sizeFilter">
+              <option value="">All sizes</option>
+            </select>
+          </div>
+          <div class="filter-control" id="colorFilterControl">
+            <label for="colorFilter">Color</label>
+            <select id="colorFilter">
+              <option value="">All colors</option>
+            </select>
+          </div>
+          <div class="filter-control">
+            <label for="sortFilter">Sort By</label>
+            <select id="sortFilter">
+              <option value="">Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
+          </div>
+          <button class="filter-clear" id="clearFilters" type="button">Clear filters</button>
+        </div>
+
+        <!-- Active Filter Pills Area -->
+        <div class="active-filter-pills" id="activeFilterPills" hidden></div>
+
+        <!-- Result count live text -->
+        <p class="product-result-count" id="categoryResultCount" aria-live="polite">Loading products…</p>
+
+        <!-- Product Cards Grid -->
+        <div class="product-grid" id="categoryProductGrid">
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty Filter Results -->
+        <div class="no-products" id="noCategoryProducts" hidden>
+          <strong>No matching fits found</strong>
+          <span>Try resetting your filters to view all products in this category.</span>
+          <button class="btn btn-outline" id="resetFiltersBtn" type="button" style="margin-top: 14px;">Reset Filters</button>
+        </div>
+
+        <!-- Category Not Found / Inactive -->
+        <div class="catalog-error-state" id="categoryNotFound" hidden>
+          <p class="eyebrow">CATEGORY NOT FOUND</p>
+          <h2 style="font-family: var(--font-display); font-size: 28px; margin: 12px 0;">This collection is unavailable</h2>
+          <p style="color: var(--grey); margin-bottom: 24px;">The category you are trying to view does not exist or has been archived.</p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="index.html#categories" class="btn btn-primary">Browse All Categories</a>
+            <a href="index.html#shop" class="btn btn-outline">Shop All Drops</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Categories Quick Links Section -->
+    <section class="section section-alt category-explore-other" id="exploreOtherCategories">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">DISCOVER MORE</span>
+            <h2>Explore Other Collections</h2>
+          </div>
+          <a href="index.html#categories" class="link-arrow">View All <svg class="ic"><use href="#icon-arrow" /></svg></a>
+        </div>
+        <div class="category-grid" id="otherCategoriesGrid">
+          <!-- Populated dynamically with active categories -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#home" class="logo" aria-label="E-Commerce Demo — Home">E-COMMERCE<span> DEMO</span></a>
+        <p>Modern streetwear &amp; apparel demo. Heavyweight cotton, clean cuts, and complete e-commerce experience.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html#shop">Shop All</a>
+        <a href="index.html#featured">New Drops</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#why">Our Story</a>
+        <a href="track.html">Track Order</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <a href="shipping-policy.html">Shipping Policy</a>
+        <a href="return-and-exchange-policy.html">Returns & Exchange</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>contact@ecommercedemo.com</p>
+        <p>Nashik, Maharashtra, India</p>
+        <p class="footer-mono">MON–SAT &nbsp; 10AM – 7PM IST</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> E-Commerce Demo. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="logger.js"></script>
+  <script src="admin-config.js"></script>
+  <script src="mock-data.js"></script>
+  <script src="auth.js"></script>
+  <script src="products.js"></script>
+  <script src="cart.js"></script>
+  <script src="category.js"></script>
+</body>
+
+</html>

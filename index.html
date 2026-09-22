@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Demo — Modern Apparel &amp; Fashion Store</title>
+  <meta name="description"
+    content="E-Commerce Demo is a full-featured modern online store demo featuring shirts, linen sets, jeans, pants and tees with seamless cart, checkout, and admin suite.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Barlow+Condensed:wght@400;600;700&family=Bebas+Neue&family=Bungee&family=Comfortaa:wght@400;700&family=DM+Sans:wght@400;500;700&family=Electrolize&family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat+Subrayada:wght@400;700&family=Orbitron:wght@400;700;900&family=Oswald:wght@400;600;700&family=Pacifico&family=Permanent+Marker&family=Playfair+Display:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Red+Hat+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&family=Spectral:wght@400;600;700&family=Yanone+Kaffeesatz:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body>
+
+  <!-- ============ ICON SPRITE ============ -->
+  <svg style="display:none">
+    <symbol id="icon-tshirt" viewBox="0 0 64 64">
+      <path d="M20 6 L8 16 L14 26 L20 22 V56 H44 V22 L50 26 L56 16 L44 6 Q38 12 32 12 Q26 12 20 6 Z" fill="none"
+        stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-pants" viewBox="0 0 64 64">
+      <path d="M14 6 H50 L52 58 H40 L32 26 L24 58 H12 Z" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linejoin="round" />
+      <line x1="14" y1="16" x2="50" y2="16" stroke="currentColor" stroke-width="2.2" />
+    </symbol>
+    <symbol id="icon-shirt" viewBox="0 0 64 64">
+      <path d="M22 6 L10 14 L15 24 L22 20 V56 H42 V20 L49 24 L54 14 L42 6 Q37 12 32 12 Q27 12 22 6 Z" fill="none"
+        stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+      <line x1="32" y1="20" x2="32" y2="52" stroke="currentColor" stroke-width="1.6" />
+      <circle cx="32" cy="26" r="1.4" fill="currentColor" />
+      <circle cx="32" cy="34" r="1.4" fill="currentColor" />
+      <circle cx="32" cy="42" r="1.4" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-jeans" viewBox="0 0 64 64">
+      <path d="M16 6 H48 L50 58 H38 L32 28 L26 58 H14 Z" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linejoin="round" />
+      <path d="M16 6 V20 M48 6 V20" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 2" />
+    </symbol>
+    <symbol id="icon-coord" viewBox="0 0 64 64">
+      <path d="M18 6 L8 14 L13 22 L18 18 V36 H30 V18 L35 22 L40 14 L30 6 Q26 10 24 10 Q22 10 18 6 Z" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      <path d="M34 36 H50 L52 58 H42 L38 44 L34 58 H26 L30 36 Z" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path d="M12 2.5 L14.9 8.6 21.5 9.5 16.8 14 18 20.6 12 17.4 6 20.6 7.2 14 2.5 9.5 9.1 8.6 Z"
+        fill="currentColor" />
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2" />
+      <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-cart" viewBox="0 0 24 24">
+      <path d="M3 4h2l2.4 12.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="9" cy="21" r="1.4" fill="currentColor" />
+      <circle cx="18" cy="21" r="1.4" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <path d="M14 6 L20 12 L14 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-truck" viewBox="0 0 24 24">
+      <rect x="1" y="7" width="13" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <path d="M14 10h4l3 3v3h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+      <circle cx="6" cy="18" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6" />
+      <circle cx="17.5" cy="18" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6" />
+    </symbol>
+    <symbol id="icon-badge" viewBox="0 0 24 24">
+      <path d="M12 2 L14.5 6.2 19.3 6.8 17.6 11.4 19.3 16 14.5 16.6 12 21 9.5 16.6 4.7 16 6.4 11.4 4.7 6.8 9.5 6.2 Z"
+        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M9 11.5 L11 13.5 15 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24">
+      <path d="M3 12a9 9 0 0 1 15.3-6.4L21 8" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" />
+      <path d="M21 3v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M21 12a9 9 0 0 1-15.3 6.4L3 16" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" />
+      <path d="M3 21v-5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-leaf" viewBox="0 0 24 24">
+      <path d="M20 4C10 4 4 10 4 18c0 0 8 2 13-3s3-11 3-11z" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linejoin="round" />
+      <path d="M6 18 L15 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <path d="M3 6.5l9 6.5 9-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24">
+      <path d="M12 22s7-7.3 7-12.5A7 7 0 0 0 5 9.5C5 14.7 12 22 12 22z" fill="none" stroke="currentColor"
+        stroke-width="1.8" stroke-linejoin="round" />
+      <circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8" />
+    </symbol>
+    <symbol id="icon-ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-yt" viewBox="0 0 24 24">
+      <rect x="2" y="5.5" width="20" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <path d="M10.5 9.5v5l4.3-2.5z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path
+        d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5.1-.7.4-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.6-1.8-1.8-2.1-.2-.3 0-.5.1-.7.1-.2.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.3 3.4 1.4 3.6c.2.3 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.6-.4z"
+        fill="currentColor" />
+      <path
+        d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.3.9.9-3.2-.2-.4A8.2 8.2 0 1 1 12 20.2z"
+        fill="currentColor" />
+    </symbol>
+    <symbol id="icon-up" viewBox="0 0 24 24">
+      <line x1="12" y1="19" x2="12" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <path d="M6 11 L12 5 L18 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+  </svg>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo" aria-label="E-Commerce Demo — Home">E-COMMERCE<span> DEMO</span></a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#shop">Shop All</a>
+        <a href="#featured">New Drops</a>
+        <a href="#categories">Categories</a>
+        <a href="#why">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Search" aria-expanded="false" aria-controls="searchPanel">
+          <svg class="ic">
+            <use href="#icon-search" />
+          </svg>
+        </button>
+        <button class="icon-btn" id="cartBtn" aria-label="Cart" aria-expanded="false" aria-controls="cartPanel">
+          <svg class="ic">
+            <use href="#icon-cart" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"
+          aria-controls="navMenu">
+          <svg class="ic" id="menuIcon">
+            <use href="#icon-menu" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- search panel -->
+    <div class="search-panel" id="searchPanel">
+      <div class="search-panel-inner">
+        <svg class="ic">
+          <use href="#icon-search" />
+        </svg>
+        <input type="search" placeholder="Search tees, jeans, linen sets…" id="searchInput"
+          aria-label="Search products">
+        <button class="icon-btn" id="closeSearch" aria-label="Close search"><svg class="ic">
+            <use href="#icon-close" />
+          </svg></button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-panel-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart"><svg class="ic">
+          <use href="#icon-close" />
+        </svg></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <p class="cart-empty" id="cartEmpty">Your cart is empty. Add a fit to get started.</p>
+    <div class="cart-summary"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+    <button class="btn btn-primary cart-checkout" id="checkoutBtn" type="button"
+      aria-describedby="checkoutMsg">Checkout</button>
+    <p class="cart-checkout-msg" id="checkoutMsg" aria-live="polite"></p>
+  </aside>
+  <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-loading" id="home">
+      <!-- Dynamic CMS Banner Slot -->
+      <div id="heroDynamicSlot" class="hero-dynamic-slot" hidden></div>
+
+      <!-- Baseline Fallback Hero (shown ONLY when no active CMS banners exist) -->
+      <div class="hero-inner" id="heroBaselineInner" hidden>
+        <div class="hero-copy" data-reveal>
+          <span class="tag-label">NASHIK-BORN &nbsp;•&nbsp; SS'26 DROP</span>
+          <h1 class="hero-title">WEAR THE<br>STREET.<br><span class="text-outline">OWN</span> THE FIT.</h1>
+          <p class="hero-sub">E-Commerce Demo is an interactive online store showcasing streetwear and modern apparel — oversized tees, boxy shirts, straight
+            denim and linen sets, with a complete shopping and management experience.</p>
+          <div class="hero-cta">
+            <a href="#featured" class="btn btn-primary">Shop The Drop <svg class="ic">
+                <use href="#icon-arrow" />
+              </svg></a>
+            <a href="#categories" class="btn btn-outline">View Lookbook</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong data-count="25000">0</strong><span>Fits Sold</span></div>
+            <div class="stat"><strong data-count="48" data-decimal="1">0</strong><span>Avg. Rating x10</span></div>
+            <div class="stat"><strong data-count="7">0</strong><span>Day Exchange</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal>
+          <div class="hero-blob"></div>
+          <div class="hero-frame">
+            <svg class="hero-icon">
+              <use href="#icon-tshirt" />
+            </svg>
+          </div>
+          <div class="floating-tag tag-1">
+            <span class="tag-code">ZX-01</span>
+            <span class="tag-desc">SIGNAL ORANGE</span>
+          </div>
+          <div class="floating-tag tag-2">
+            <span class="tag-code">MADE IN</span>
+            <span class="tag-desc">NASHIK, IN</span>
+          </div>
+        </div>
+      </div>
+      <a href="#featured" class="scroll-cue" id="heroScrollCue" aria-hidden="true"><span></span></a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-label="Announcements">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>NEW DROP LIVE</span><span class="dot">●</span>
+          <span>FREE SHIPPING ABOVE ₹1,999</span><span class="dot">●</span>
+          <span>7-DAY EASY EXCHANGE</span><span class="dot">●</span>
+          <span>STREETWEAR FROM NASHIK</span><span class="dot">●</span>
+          <span>BUILT FOR EVERYDAY</span><span class="dot">●</span>
+          <span>E-COMMERCE DEMO</span><span class="dot">●</span>
+          <span>NEW DROP LIVE</span><span class="dot">●</span>
+          <span>FREE SHIPPING ABOVE ₹1,999</span><span class="dot">●</span>
+          <span>7-DAY EASY EXCHANGE</span><span class="dot">●</span>
+          <span>STREETWEAR FROM NASHIK</span><span class="dot">●</span>
+          <span>BUILT FOR EVERYDAY</span><span class="dot">●</span>
+          <span>E-COMMERCE DEMO</span><span class="dot">●</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>NEW DROP LIVE</span><span class="dot">●</span>
+          <span>FREE SHIPPING ABOVE ₹1,999</span><span class="dot">●</span>
+          <span>7-DAY EASY EXCHANGE</span><span class="dot">●</span>
+          <span>STREETWEAR FROM NASHIK</span><span class="dot">●</span>
+          <span>BUILT FOR EVERYDAY</span><span class="dot">●</span>
+          <span>E-COMMERCE DEMO</span><span class="dot">●</span>
+          <span>NEW DROP LIVE</span><span class="dot">●</span>
+          <span>FREE SHIPPING ABOVE ₹1,999</span><span class="dot">●</span>
+          <span>7-DAY EASY EXCHANGE</span><span class="dot">●</span>
+          <span>STREETWEAR FROM NASHIK</span><span class="dot">●</span>
+          <span>BUILT FOR EVERYDAY</span><span class="dot">●</span>
+          <span>E-COMMERCE DEMO</span><span class="dot">●</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ FEATURED PRODUCTS ============ -->
+    <section class="section" id="featured">
+      <div class="section-inner">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="eyebrow">THIS WEEK'S DROP</span>
+            <h2>Featured Fits</h2>
+          </div>
+          <a href="#shop" class="link-arrow">View All Products <svg class="ic">
+              <use href="#icon-arrow" />
+            </svg></a>
+        </div>
+
+        <div class="product-filters" id="productFilters" aria-label="Filter products">
+          <div class="filter-control" id="categoryFilterControl"><label for="categoryFilter">Category</label><select id="categoryFilter">
+              <option value="">All categories</option>
+            </select></div>
+          <div class="filter-control" id="sizeFilterControl"><label for="sizeFilter">Size</label><select id="sizeFilter">
+              <option value="">All sizes</option>
+            </select></div>
+          <div class="filter-control" id="colorFilterControl"><label for="colorFilter">Color</label><select id="colorFilter">
+              <option value="">All colors</option>
+            </select></div>
+          <div class="filter-control" id="priceFilterControl"><label for="priceFilter">Price</label><select id="priceFilter">
+              <option value="">All prices</option>
+            </select></div>
+          <div class="filter-control" id="sortFilterControl"><label for="sortFilter">Sort by</label><select id="sortFilter">
+              <option value="">Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select></div>
+          <button class="filter-clear" id="clearFilters" type="button">Clear filters</button>
+        </div>
+        <p class="product-result-count" id="productResultCount" aria-live="polite"></p>
+
+        <div class="product-grid" id="shop">
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+          <div class="product-card product-card-skeleton" aria-hidden="true">
+            <div class="product-media skeleton-media"></div>
+            <div class="product-info">
+              <div class="skeleton-line skeleton-cat"></div>
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-price"></div>
+            </div>
+          </div>
+        </div>
+        <p class="no-products" id="noProducts" hidden><strong>No products found</strong><span>Try changing your search
+            or filters.</span></p>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section class="section section-alt" id="categories">
+      <div class="section-inner">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="eyebrow">SHOP BY CATEGORY</span>
+            <h2>Find Your Fit</h2>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <!-- 1. T-Shirts -->
+          <a href="category.html?category=t-shirts" class="category-card" data-category-filter="t-shirts" data-reveal>
+            <div class="cat-icon-wrap">
+              <svg class="cat-icon" aria-hidden="true">
+                <use href="#icon-tshirt" />
+              </svg>
+            </div>
+            <div class="category-label">
+              <h3>T-Shirts</h3>
+              <span class="cat-explore">Explore <span class="cat-arrow">→</span></span>
+            </div>
+          </a>
+
+          <!-- 2. Shirts -->
+          <a href="category.html?category=shirts" class="category-card" data-category-filter="shirts" data-reveal>
+            <div class="cat-icon-wrap">
+              <svg class="cat-icon" aria-hidden="true">
+                <use href="#icon-shirt" />
+              </svg>
+            </div>
+            <div class="category-label">
+              <h3>Shirts</h3>
+              <span class="cat-explore">Explore <span class="cat-arrow">→</span></span>
+            </div>
+          </a>
+
+          <!-- 3. Jeans -->
+          <a href="category.html?category=jeans" class="category-card" data-category-filter="jeans" data-reveal>
+            <div class="cat-icon-wrap">
+              <svg class="cat-icon" aria-hidden="true">
+                <use href="#icon-jeans" />
+              </svg>
+            </div>
+            <div class="category-label">
+              <h3>Jeans</h3>
+              <span class="cat-explore">Explore <span class="cat-arrow">→</span></span>
+            </div>
+          </a>
+
+          <!-- 4. Pants -->
+          <a href="category.html?category=pants" class="category-card" data-category-filter="pants" data-reveal>
+            <div class="cat-icon-wrap">
+              <svg class="cat-icon" aria-hidden="true">
+                <use href="#icon-pants" />
+              </svg>
+            </div>
+            <div class="category-label">
+              <h3>Pants</h3>
+              <span class="cat-explore">Explore <span class="cat-arrow">→</span></span>
+            </div>
+          </a>
+
+          <!-- 5. Track Pants -->
+          <a href="category.html?category=track-pants" class="category-card" data-category-filter="track-pants" data-reveal>
+            <div class="cat-icon-wrap">
+              <svg class="cat-icon" aria-hidden="true">
+                <use href="#icon-pants" />
+              </svg>
+            </div>
+            <div class="category-label">
+              <h3>Track Pants</h3>
+              <span class="cat-explore">Explore <span class="cat-arrow">→</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section why" id="why">
+      <div class="section-inner">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow">WHY CHOOSE US</span>
+          <h2>Built For The Street, Not The Shelf</h2>
+          <p class="section-desc">Thoughtful fits, quality fabrics and everyday pieces designed for the way you actually
+            dress.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card" data-reveal>
+            <svg class="why-icon">
+              <use href="#icon-leaf" />
+            </svg>
+            <h3>PREMIUM FABRICS</h3>
+            <p>Comfortable fabrics and refined textures chosen to look and feel better with every wear.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <svg class="why-icon">
+              <use href="#icon-badge" />
+            </svg>
+            <h3>CONSIDERED FITS</h3>
+            <p>Clean silhouettes and relaxed proportions designed for a confident everyday fit.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <svg class="why-icon">
+              <use href="#icon-truck" />
+            </svg>
+            <h3>FAST DELIVERY</h3>
+            <p>Free shipping above ₹1,999, with orders packed and dispatched quickly.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <svg class="why-icon">
+              <use href="#icon-refresh" />
+            </svg>
+            <h3>EASY EXCHANGE</h3>
+            <p>Not the right size or fit? Enjoy a simple 7-day exchange.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRAND STANDARD / POSITIONING ============ -->
+    <section class="section reviews-section" id="standard">
+      <div class="section-inner">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="eyebrow">OUR QUALITY STANDARD</span>
+            <h2>Built For Your Everyday</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="icon-btn" id="revPrev" aria-label="Previous slide"><svg class="ic flip">
+                <use href="#icon-arrow" />
+              </svg></button>
+            <button class="icon-btn" id="revNext" aria-label="Next slide"><svg class="ic">
+                <use href="#icon-arrow" />
+              </svg></button>
+          </div>
+        </div>
+
+        <div class="review-viewport">
+          <div class="review-track" id="reviewTrack">
+            <!-- CARD 1 -->
+            <div class="review-card">
+              <span class="tag-label">PRODUCT EXPERIENCE</span>
+              <p>Clean fits, solid fabrics, and oversized silhouettes made for everyday wear.</p>
+              <div class="card-caption"><span>Everyday comfort. Modern streetwear.</span></div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="review-card">
+              <span class="tag-label">EVERYDAY STREETWEAR</span>
+              <p>Easy to style, comfortable through the day, and sharp enough to stand out.</p>
+              <div class="card-caption"><span>Made for everyday movement.</span></div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="review-card">
+              <span class="tag-label">MODERN FITS</span>
+              <p>Relaxed proportions, clean details, and a fit that feels intentional.</p>
+              <div class="card-caption"><span>Designed to stand out.</span></div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="review-card">
+              <span class="tag-label">FROM NASHIK</span>
+              <p>Streetwear with a local identity — minimal, confident, and made to be your own.</p>
+              <div class="card-caption"><span>Born in Nashik. Built for everywhere.</span></div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="review-card">
+              <span class="tag-label">CUSTOM PRINTS</span>
+              <p>Add your name, custom text, or your own image and get it printed on your T-shirt.</p>
+              <div class="card-caption"><span>Your Name. Your Design. Your T-Shirt.</span></div>
+            </div>
+          </div>
+          <div class="review-dots" id="reviewDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="newsletter">
+      <div class="newsletter-inner" data-reveal>
+        <span class="tag-label light">GET IN EARLY</span>
+        <h2>Get 10% Off Your First Drop</h2>
+        <p>Join the list for early access to new drops, restocks and Nashik-only pop-up dates. No spam, just fits.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <svg class="ic">
+            <use href="#icon-mail" />
+          </svg>
+          <input type="email" id="newsletterEmail" placeholder="you@email.com" autocomplete="email" required>
+          <button type="submit" class="btn btn-primary">Get My Code</button>
+        </form>
+        <p class="form-msg" id="formMsg" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-col brand-col">
+        <a href="#home" class="logo">E-COMMERCE<span> DEMO</span></a>
+        <p>A modern, full-featured streetwear &amp; apparel e-commerce demo with interactive catalog, cart, checkout, order tracking, and an interactive admin suite.</p>
+        <div class="socials">
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg class="ic">
+              <use href="#icon-ig" />
+            </svg></a>
+          <a href="#" class="icon-btn" aria-label="X"><svg class="ic">
+              <use href="#icon-x" />
+            </svg></a>
+          <a href="#" class="icon-btn" aria-label="YouTube"><svg class="ic">
+              <use href="#icon-yt" />
+            </svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#shop">T-Shirts</a>
+        <a href="#shop">Shirts</a>
+        <a href="#shop">Jeans</a>
+        <a href="#shop">Pants</a>
+        <a href="#shop">Track Pants</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns &amp; Exchange</a>
+        <a href="track.html">Track Your Order</a>
+        <a href="#">Size Guide</a>
+        <a href="#">FAQs</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4>Contact</h4>
+        <a href="https://maps.app.goo.gl/kUQ66CwehY7Tn7UHA?g_st=ac" class="store-address store-address-link"
+          target="_blank" rel="noopener noreferrer">
+          <svg class="ic">
+            <use href="#icon-pin" />
+          </svg>
+          <span>Satpur–Ambad Link Road, Mahada Road, Nashik – 422010</span>
+        </a>
+        <a href="mailto:contact@ecommercedemo.com" class="store-address store-address-link">
+          <svg class="ic">
+            <use href="#icon-mail" />
+          </svg>
+          <span>contact@ecommercedemo.com</span>
+        </a>
+        <a href="https://wa.me/917052573955" class="store-address store-address-link" target="_blank"
+          rel="noopener noreferrer">
+          <svg class="ic">
+            <use href="#icon-whatsapp" />
+          </svg>
+          <span>+91 7052573955</span>
+        </a>
+        <span class="tag-label">MON–SUN · 10 AM–10 PM</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <p>&copy; <span id="year">2026</span> E-Commerce Demo. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
+          <a href="return-and-exchange-policy.html">Return &amp; Exchange</a>
+        </div>
+      </div>
+      <p class="payments">UPI · Cards · Net Banking · COD</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg class="ic">
+      <use href="#icon-up" />
+    </svg>
+  </button>
+
+  <script src="logger.js"></script>
+  <script src="admin-config.js"></script>
+  <script src="mock-data.js"></script>
+  <script src="auth.js"></script>
+  <script src="banners.js"></script>
+  <script src="products.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
